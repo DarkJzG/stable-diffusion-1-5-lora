@@ -1,0 +1,26 @@
+import pkg_resources
+from pathlib import Path
+
+# Lista recomendada basada en lo usado para generación de imágenes con LoRA y SD 1.5
+requeridas = {
+    "torch",
+    "torchvision",
+    "torchaudio",
+    "diffusers",
+    "transformers",
+    "safetensors",
+    "accelerate",
+    "xformers",
+    "gradio",
+    "pillow"
+}
+
+# Obtener versiones instaladas
+instaladas = {pkg.key: pkg.version for pkg in pkg_resources.working_set}
+
+# Filtrar las necesarias con versión
+con_versiones = [f"{pkg}=={instaladas[pkg]}" for pkg in requeridas if pkg in instaladas]
+
+# Guardar el archivo
+Path("requirements.txt").write_text("\n".join(sorted(con_versiones)))
+con_versiones
