@@ -1,0 +1,15 @@
+# Entornos virtuales
+.venv/
+venv/
+
+# Cache de HuggingFace
+~/.cache/
+C:/Users/johan/.cache/
+
+# Archivos temporales de entrenamiento
+*.log
+*.tmp
+
+# Para ignorar checkpoints intermedios si no los quieres
+output/*.ckpt
+
